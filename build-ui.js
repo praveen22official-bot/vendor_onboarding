@@ -8,4 +8,6 @@ html = html.replace('<!--ENGINE-->', () => wrap(r('engine.js')))
   .replace('<!--UI-->', () => wrap(r('ui.js')));
 fs.mkdirSync(path.join(__dirname, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'dist/vendor-onboarding-desk.html'), html);
+// index.html so the site root (/) serves the app instead of a 404
+fs.writeFileSync(path.join(__dirname, 'dist/index.html'), html);
 console.log('built', (html.length / 1024).toFixed(0) + ' KB');
